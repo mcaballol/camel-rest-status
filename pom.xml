@@ -65,6 +65,11 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <outputDirectory>${project.build.directory}</outputDirectory>
+          <outputName>${project.artifactId}-${project.version}-runner</outputName>
+          <uberJar>true</uberJar>
+        </configuration>
       </plugin>
     </plugins>
   </build>
