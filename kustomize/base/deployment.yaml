@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: camel-rest-status
-        image: tu-registro/camel-rest-status:latest
+        image: quay.io/mcaballol/camel-rest-status:latest
         ports:
         - containerPort: 8080
         env:
