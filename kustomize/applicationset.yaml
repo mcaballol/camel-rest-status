@@ -20,10 +20,8 @@ spec:
       project: camel-demo
       source:
         repoURL: https://github.com/mcaballol/camel-rest-status.git  # Cambia esto a tu repo real
-        targetRevision: HEAD
+        targetRevision: main
         path: '{{path}}'
-        directory:
-          recurse: true
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{namespace}}'
