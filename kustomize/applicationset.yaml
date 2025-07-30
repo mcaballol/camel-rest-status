@@ -17,7 +17,7 @@ spec:
     metadata:
       name: 'camel-rest-status-{{name}}'
     spec:
-      project: default
+      project: camel-demo
       source:
         repoURL: https://github.com/mcaballol/camel-rest-status.git  # Cambia esto a tu repo real
         targetRevision: HEAD
