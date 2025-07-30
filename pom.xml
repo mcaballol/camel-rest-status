@@ -7,25 +7,34 @@
   <artifactId>camel-quarkus-rest-status</artifactId>
   <version>1.0.0</version>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <quarkus.plugin.version>3.8.2</quarkus.plugin.version>
-    <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
-    <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-    <quarkus.platform.version>3.8.2</quarkus.platform.version>
-  </properties>
+<properties>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <quarkus.plugin.version>3.8.2</quarkus.plugin.version>
+  <quarkus.platform.version>3.8.2</quarkus.platform.version>
+  <camel-quarkus.version>3.8.0</camel-quarkus.version>
+</properties>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>${quarkus.platform.group-id}</groupId>
-        <artifactId>${quarkus.platform.artifact-id}</artifactId>
-        <version>${quarkus.platform.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+<dependencyManagement>
+  <dependencies>
+    <!-- BOM de Camel Quarkus -->
+    <dependency>
+      <groupId>org.apache.camel.quarkus</groupId>
+      <artifactId>camel-quarkus-bom</artifactId>
+      <version>3.8.0</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+
+    <!-- BOM de Quarkus -->
+    <dependency>
+      <groupId>io.quarkus.platform</groupId>
+      <artifactId>quarkus-bom</artifactId>
+      <version>3.8.2</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
 
   <dependencies>
     <dependency>
