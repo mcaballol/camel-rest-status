@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: camel-rest-status
-        image: quay.io/mcaballol/camel-rest-status:v3
+        image: quay.io/mcaballol/camel-rest-status:r1
         imagePullPolicy: Always 
         ports:
         - containerPort: 8080
