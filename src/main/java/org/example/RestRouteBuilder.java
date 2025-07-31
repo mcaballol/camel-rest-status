@@ -8,7 +8,7 @@ public class RestRouteBuilder extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        //restConfiguration().bindingMode(RestBindingMode.json);
+        restConfiguration().bindingMode(RestBindingMode.auto);
         rest("/info")
             .get()
             .produces("application/json")
