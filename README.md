@@ -204,52 +204,6 @@ podman search quay.io/[tu-usuario]/camel-rest-status
 #### Usando el Script de Automatización
 
 ```bash
-# Editar el script build-and-push.sh
-cat > build-and-push.sh << 'EOF'
-#!/bin/bash
-
-# Variables de configuración
-REGISTRY="quay.io"
-USERNAME="[tu-usuario]"
-IMAGE_NAME="camel-rest-status"
-VERSION="${1:-v1.0}"
-DATE_TAG=$(date +%Y%m%d)
-
-echo "🏗️  Compilando aplicación..."
-./mvnw clean package
-
-if [ $? -ne 0 ]; then
-    echo "❌ Error en la compilación"
-    exit 1
-fi
-
-echo "🐳 Construyendo imagen Docker..."
-podman build -t ${REGISTRY}/${USERNAME}/${IMAGE_NAME}:${VERSION} .
-
-if [ $? -ne 0 ]; then
-    echo "❌ Error construyendo imagen"
-    exit 1
-fi
-
-echo "🏷️  Creando tags adicionales..."
-podman tag ${REGISTRY}/${USERNAME}/${IMAGE_NAME}:${VERSION} ${REGISTRY}/${USERNAME}/${IMAGE_NAME}:latest
-podman tag ${REGISTRY}/${USERNAME}/${IMAGE_NAME}:${VERSION} ${REGISTRY}/${USERNAME}/${IMAGE_NAME}:${DATE_TAG}
-
-echo "📤 Publicando imágenes en Quay.io..."
-podman push ${REGISTRY}/${USERNAME}/${IMAGE_NAME}:${VERSION}
-podman push ${REGISTRY}/${USERNAME}/${IMAGE_NAME}:latest
-podman push ${REGISTRY}/${USERNAME}/${IMAGE_NAME}:${DATE_TAG}
-
-if [ $? -eq 0 ]; then
-    echo "✅ Imágenes publicadas exitosamente:"
-    echo "   - ${REGISTRY}/${USERNAME}/${IMAGE_NAME}:${VERSION}"
-    echo "   - ${REGISTRY}/${USERNAME}/${IMAGE_NAME}:latest"
-    echo "   - ${REGISTRY}/${USERNAME}/${IMAGE_NAME}:${DATE_TAG}"
-else
-    echo "❌ Error publicando imágenes"
-    exit 1
-fi
-EOF
 
 # Hacer ejecutable el script
 chmod +x build-and-push.sh
